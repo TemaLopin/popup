@@ -1,0 +1,103 @@
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-wrapper {
+  width: 210px;
+  height: 108px;
+
+  user-select: none;
+  position: relative;
+}
+
+.card {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform 0.2s linear;
+}
+
+.front {
+  background: url('../../assets/card-front.png') no-repeat;
+  background-size: contain;
+}
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url('../../assets/card-back.png') no-repeat;
+  background-size: contain;
+}
+
+.front {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.back {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.open .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+.open .back {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+:not(.open) > .card:hover .front {
+  transform: scale(1.12);
+}
+
+.card-empty-text {
+  font-family: var(--font-family-regular);
+  font-weight: 700;
+  font-size: 18px;
+
+  color: var(--color-purple-600);
+}
+
+.card-discount-title {
+  font-family: var(--font-family-regular);
+  font-weight: 700;
+  font-size: 18px;
+
+  color: var(--color-purple-600);
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+.card-discount-number {
+  font-family: var(--font-family-bold);
+  font-weight: 800;
+  font-size: 56px;
+
+  line-height: 60px;
+
+  color: var(--color-purple-600);
+}
+
+@media screen and (max-width: 500px) {
+  .card:hover .front {
+    transform: scale(1);
+  }
+
+  .card-wrapper {
+    width: 160px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,22 @@
+.input {
+  width: 100%;
+
+  padding: 13px 0px;
+  margin-bottom: 10px;
+
+  font-family: var(--font-family-regular);
+  font-weight: 400;
+  font-size: 26px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  border-radius: 10px;
+
+  outline: none;
+  border: 2px solid var(--color-purple-400);
+}
+
+.input::placeholder {
+  color: #d0d0d0;
+}

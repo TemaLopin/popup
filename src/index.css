@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-grey-300: #303030;
+
+  --color-purple-200: #eeccee;
+  --color-purple-400: #864696;
+  --color-purple-600: #632060;
+
+  --font-family-bold: 'Circe Extra Bold';
+  --font-family-regular: 'Circe Regular';
+
+  --modal-bg-color: #0001;
+  --white-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.congratulation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 760px;
+}
+
+.form {
+  margin: 20px 0px;
+  max-width: 320px;
+}
+
+.form-inputs {
+  margin-bottom: 20px;
+}
+
+.lose {
+  min-height: 300px;
+  max-width: 760px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
