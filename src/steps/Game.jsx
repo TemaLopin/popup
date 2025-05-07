@@ -18,7 +18,7 @@ const getShuffleArray = (arr) => {
 
 const WAIT_TIME = 800
 
-export const Game = ({ onResult }) => {
+export const Game = ({ onResult, showButton }) => {
   const [selectedCards, setSelectedCards] = useState([])
 
   const handleSelectCard = (cardId) => {
@@ -44,9 +44,11 @@ export const Game = ({ onResult }) => {
         })}
       </div>
       <div className='modal-footer'>
-        <Button onClick={() => onResult({ isWin: true })}>
-          <p className='modal-description'>Не буду играть, хочу промокод</p>
-        </Button>
+        {showButton && (
+          <Button onClick={() => onResult({ isWin: true })}>
+            <p className='modal-description'>Не буду играть, хочу промокод</p>
+          </Button>
+        )}
       </div>
     </div>
   )
