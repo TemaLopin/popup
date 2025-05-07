@@ -5,7 +5,7 @@ export const Card = ({ card, onClick, isSelect }) => {
 
   const handleClick = () => onClick(id)
 
-  const classNameOpen = isSelect  ? 'open' : ''
+  const classNameOpen = isSelect ? 'open' : ''
 
   return (
     <div className={`card-wrapper ${classNameOpen}`} onClick={handleClick}>
@@ -14,7 +14,7 @@ export const Card = ({ card, onClick, isSelect }) => {
         <div class='back'>
           {discount === 0 ? (
             <p className='card-empty-text'>
-              Здесь пусто! <br /> Попробуйте еще раз
+              <span>Здесь пусто!</span> <br /> <span>Попробуйте еще раз</span>
             </p>
           ) : (
             <div className='card-discount-body'>

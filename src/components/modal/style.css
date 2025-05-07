@@ -46,6 +46,17 @@
   margin-left: auto;
 }
 
+.modal-footer {
+  margin: 0px auto;
+}
+
+.modal-footer > button {
+  width: fit-content;
+  margin-top: 24px;
+  padding: 5px 16px;
+  white-space: nowrap;
+}
+
 .modal-cards-body {
   margin-top: 30px;
   padding: 0px 10px 20px 10px;

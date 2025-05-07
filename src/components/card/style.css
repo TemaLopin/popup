@@ -92,6 +92,23 @@
 }
 
 @media screen and (max-width: 500px) {
+  .card-discount-title {
+    font-size: 16px;
+  }
+
+  .card-empty-text {
+    font-size: 18px;
+  }
+
+  .card-empty-text > :not(span:first-child) {
+    display: none;
+  }
+
+  .card-discount-number {
+    line-height: 40px;
+    font-size: 52px;
+  }
+
   .card:hover .front {
     transform: scale(1);
   }

@@ -1,4 +1,4 @@
-import { Card } from '../components'
+import { Button, Card } from '../components'
 import { useMemo, useState } from 'react'
 
 const variants = new Array(6).fill(false).map((_, i) => ({
@@ -16,17 +16,16 @@ const getShuffleArray = (arr) => {
   return newArr
 }
 
-const WAIT_TIME = 500
+const WAIT_TIME = 800
 
 export const Game = ({ onResult }) => {
   const [selectedCards, setSelectedCards] = useState([])
 
   const handleSelectCard = (cardId) => {
-    if (selectedCards.length >= 3) return onResult({ isWin: false })
-
     const card = cards?.find((_, id) => cardId === id)
     const newSelectedCards = [...selectedCards, card]
     setSelectedCards(newSelectedCards)
+    if (newSelectedCards.length >= 3) return setTimeout(() => onResult({ isWin: false }), WAIT_TIME)
 
     const hasDiscount = newSelectedCards.some(({ discount }) => discount > 0)
     if (hasDiscount) return setTimeout(() => onResult({ isWin: true }), WAIT_TIME)
@@ -43,6 +42,11 @@ export const Game = ({ onResult }) => {
           const isSelect = selectedCards?.find(({ id }) => id === card?.id)
           return <Card card={{ ...card, id }} onClick={handleSelectCard} isSelect={isSelect} />
         })}
+      </div>
+      <div className='modal-footer'>
+        <Button onClick={() => onResult({ isWin: true })}>
+          <p className='modal-description'>Не буду играть, хочу промокод</p>
+        </Button>
       </div>
     </div>
   )
