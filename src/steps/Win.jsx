@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Input, Checkbox } from '../components'
 
-export const Win = ({ onSendUserData }) => {
+export const Win = ({ onSendUserData, result }) => {
   const [user, setUser] = useState({ email: '', date: '', success: false })
 
   const onChangeUser = (key, value) => {
@@ -24,12 +24,18 @@ export const Win = ({ onSendUserData }) => {
   }
   const isButtonDisabled = getButtonDisables()
 
+  const isSkip = result?.isSkip
+
   return (
     <div className='congratulation'>
-      <p className='modal-title'>Поздравляем!</p>{' '}
-      <p className='modal-description'>
-        Вы нашли промокод: оставьте свою почту — отправим письмо со скидкой на подборку напитков
-      </p>
+      {!isSkip && <p className='modal-title'>Поздравляем!</p>}
+      {!isSkip ? (
+        <p className='modal-description'>
+          Вы нашли промокод: оставьте свою почту — отправим письмо со скидкой на подборку напитков
+        </p>
+      ) : (
+        <p className='modal-description-skip'>Оставьте свою почту — отправим письмо со скидкой на подборку напитков</p>
+      )}
       <div className='form'>
         <div className='form-inputs'>
           <Input placeholder={'Email'} value={user?.email} onChange={(value) => onChangeUser('email', value)} />

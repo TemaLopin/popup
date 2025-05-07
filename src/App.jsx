@@ -10,13 +10,14 @@ const STEPS = { GAME: 0, WIN: 1, LOSE: 2 }
 function App() {
   const [showButton, setShowButton] = useState(false)
   const [isOpenModal, setIsOpenModal] = useState(true)
-  const [step, setStep] = useState(STEPS.GAME)
+
+  const [step, setStep] = useState({ step: STEPS.GAME, isWin: false, isSkip: false })
 
   const onCloseModal = () => setIsOpenModal(false)
 
-  const onResultGame = ({ isWin }) => {
-    if (isWin) return setStep(STEPS.WIN)
-    return setStep(STEPS.LOSE)
+  const onResultGame = ({ isWin, isSkip }) => {
+    if (isWin) return setStep({ step: STEPS.WIN, isWin, isSkip })
+    return setStep({ step: STEPS.LOSE, isWin, isSkip })
   }
 
   const onSendUserData = ({ email, date }) => {
@@ -44,9 +45,9 @@ function App() {
     <>
       <Modal open={isOpenModal} onClose={onCloseModal}>
         <Checkbox onChange={() => setShowButton((prev) => !prev)}>Показывать кнопку</Checkbox>
-        {step === STEPS.GAME && <Game onResult={onResultGame} showButton={showButton} />}
-        {step === STEPS.WIN && <Win onSendUserData={onSendUserData} />}
-        {step === STEPS.LOSE && <Lose />}
+        {step.step === STEPS.GAME && <Game onResult={onResultGame} showButton={showButton} />}
+        {step.step === STEPS.WIN && <Win onSendUserData={onSendUserData} result={step} />}
+        {step.step === STEPS.LOSE && <Lose />}
       </Modal>
     </>
   )

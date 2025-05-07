@@ -37,6 +37,13 @@
   font-size: 26px;
 }
 
+.modal-description-skip {
+  font-family: var(--font-family-regular);
+  font-size: 26px;
+
+  width: 65%;
+}
+
 .modal-text {
   font-family: var(--font-family-regular);
   font-size: 12px;
@@ -80,6 +87,11 @@
   }
 
   .modal-description {
+    font-size: 20px;
+  }
+
+  .modal-description-skip {
+    width: 100%;
     font-size: 20px;
   }
 

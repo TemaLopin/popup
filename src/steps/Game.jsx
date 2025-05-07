@@ -24,11 +24,12 @@ export const Game = ({ onResult, showButton }) => {
   const handleSelectCard = (cardId) => {
     const card = cards?.find((_, id) => cardId === id)
     const newSelectedCards = [...selectedCards, card]
+    if (newSelectedCards.length === 4) return
     setSelectedCards(newSelectedCards)
-    if (newSelectedCards.length >= 3) return setTimeout(() => onResult({ isWin: false }), WAIT_TIME)
+    if (newSelectedCards.length >= 3) return setTimeout(() => onResult({ isWin: false, isSkip: false }), WAIT_TIME)
 
     const hasDiscount = newSelectedCards.some(({ discount }) => discount > 0)
-    if (hasDiscount) return setTimeout(() => onResult({ isWin: true }), WAIT_TIME)
+    if (hasDiscount) return setTimeout(() => onResult({ isWin: true, isSkip: false }), WAIT_TIME)
   }
 
   const cards = useMemo(() => getShuffleArray(variants), [])
@@ -45,7 +46,7 @@ export const Game = ({ onResult, showButton }) => {
       </div>
       <div className='modal-footer'>
         {showButton && (
-          <Button onClick={() => onResult({ isWin: true })}>
+          <Button onClick={() => onResult({ isWin: true, isSkip: true })}>
             <p className='modal-description'>Не буду играть, хочу промокод</p>
           </Button>
         )}
